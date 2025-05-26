@@ -749,27 +749,27 @@ func (x *UpdateCampaignByIDResponse) GetUpdatedCampaign() []*Campaign {
 }
 
 // Get Campaign By ID
-type GetCampaignByUserIDRequest struct {
+type GetCampaignsByUserIDRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	UserId        int32                  `protobuf:"varint,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetCampaignByUserIDRequest) Reset() {
-	*x = GetCampaignByUserIDRequest{}
+func (x *GetCampaignsByUserIDRequest) Reset() {
+	*x = GetCampaignsByUserIDRequest{}
 	mi := &file_campaign_v1_campaign_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetCampaignByUserIDRequest) String() string {
+func (x *GetCampaignsByUserIDRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetCampaignByUserIDRequest) ProtoMessage() {}
+func (*GetCampaignsByUserIDRequest) ProtoMessage() {}
 
-func (x *GetCampaignByUserIDRequest) ProtoReflect() protoreflect.Message {
+func (x *GetCampaignsByUserIDRequest) ProtoReflect() protoreflect.Message {
 	mi := &file_campaign_v1_campaign_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -781,39 +781,39 @@ func (x *GetCampaignByUserIDRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetCampaignByUserIDRequest.ProtoReflect.Descriptor instead.
-func (*GetCampaignByUserIDRequest) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetCampaignsByUserIDRequest.ProtoReflect.Descriptor instead.
+func (*GetCampaignsByUserIDRequest) Descriptor() ([]byte, []int) {
 	return file_campaign_v1_campaign_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *GetCampaignByUserIDRequest) GetUserId() int32 {
+func (x *GetCampaignsByUserIDRequest) GetUserId() int32 {
 	if x != nil {
 		return x.UserId
 	}
 	return 0
 }
 
-type GetCampaignByUserIDResponse struct {
+type GetCampaignsByUserIDResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Campaign      []*Campaign            `protobuf:"bytes,1,rep,name=campaign,proto3" json:"campaign,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
-func (x *GetCampaignByUserIDResponse) Reset() {
-	*x = GetCampaignByUserIDResponse{}
+func (x *GetCampaignsByUserIDResponse) Reset() {
+	*x = GetCampaignsByUserIDResponse{}
 	mi := &file_campaign_v1_campaign_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
 
-func (x *GetCampaignByUserIDResponse) String() string {
+func (x *GetCampaignsByUserIDResponse) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*GetCampaignByUserIDResponse) ProtoMessage() {}
+func (*GetCampaignsByUserIDResponse) ProtoMessage() {}
 
-func (x *GetCampaignByUserIDResponse) ProtoReflect() protoreflect.Message {
+func (x *GetCampaignsByUserIDResponse) ProtoReflect() protoreflect.Message {
 	mi := &file_campaign_v1_campaign_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
@@ -825,12 +825,12 @@ func (x *GetCampaignByUserIDResponse) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use GetCampaignByUserIDResponse.ProtoReflect.Descriptor instead.
-func (*GetCampaignByUserIDResponse) Descriptor() ([]byte, []int) {
+// Deprecated: Use GetCampaignsByUserIDResponse.ProtoReflect.Descriptor instead.
+func (*GetCampaignsByUserIDResponse) Descriptor() ([]byte, []int) {
 	return file_campaign_v1_campaign_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *GetCampaignByUserIDResponse) GetCampaign() []*Campaign {
+func (x *GetCampaignsByUserIDResponse) GetCampaign() []*Campaign {
 	if x != nil {
 		return x.Campaign
 	}
@@ -887,10 +887,10 @@ const file_campaign_v1_campaign_proto_rawDesc = "" +
 	"\bcategory\x18\b \x01(\x0e2\x1d.campaign.v1.CampaignCategoryR\bcategory\x12!\n" +
 	"\fmin_donation\x18\t \x01(\x05R\vminDonation\"^\n" +
 	"\x1aUpdateCampaignByIDResponse\x12@\n" +
-	"\x10updated_campaign\x18\x01 \x03(\v2\x15.campaign.v1.CampaignR\x0fupdatedCampaign\"5\n" +
-	"\x1aGetCampaignByUserIDRequest\x12\x17\n" +
-	"\auser_id\x18\x01 \x01(\x05R\x06userId\"P\n" +
-	"\x1bGetCampaignByUserIDResponse\x121\n" +
+	"\x10updated_campaign\x18\x01 \x03(\v2\x15.campaign.v1.CampaignR\x0fupdatedCampaign\"6\n" +
+	"\x1bGetCampaignsByUserIDRequest\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\x05R\x06userId\"Q\n" +
+	"\x1cGetCampaignsByUserIDResponse\x121\n" +
 	"\bcampaign\x18\x01 \x03(\v2\x15.campaign.v1.CampaignR\bcampaign*\xa7\x01\n" +
 	"\x0eCampaignStatus\x12\x1f\n" +
 	"\x1bCAMPAIGN_STATUS_UNSPECIFIED\x10\x00\x12\x1a\n" +
@@ -908,13 +908,13 @@ const file_campaign_v1_campaign_proto_rawDesc = "" +
 	"\x1bCAMPAIGN_CATEGORY_COMMUNITY\x10\x06\x12 \n" +
 	"\x1cCAMPAIGN_CATEGORY_TECHNOLOGY\x10\a\x12\x1a\n" +
 	"\x16CAMPAIGN_CATEGORY_ARTS\x10\b\x12\x1c\n" +
-	"\x18CAMPAIGN_CATEGORY_SPORTS\x10\t2\x82\x04\n" +
+	"\x18CAMPAIGN_CATEGORY_SPORTS\x10\t2\x85\x04\n" +
 	"\x0fCampaignService\x12Y\n" +
 	"\x0eCreateCampaign\x12\".campaign.v1.CreateCampaignRequest\x1a#.campaign.v1.CreateCampaignResponse\x12\\\n" +
 	"\x0fGetCampaignByID\x12#.campaign.v1.GetCampaignByIDRequest\x1a$.campaign.v1.GetCampaignByIDResponse\x12e\n" +
 	"\x12DeleteCampaignByID\x12&.campaign.v1.DeleteCampaignByIDRequest\x1a'.campaign.v1.DeleteCampaignByIDResponse\x12e\n" +
-	"\x12UpdateCampaignByID\x12&.campaign.v1.UpdateCampaignByIDRequest\x1a'.campaign.v1.UpdateCampaignByIDResponse\x12h\n" +
-	"\x13GetCampaignByUserID\x12'.campaign.v1.GetCampaignByUserIDRequest\x1a(.campaign.v1.GetCampaignByUserIDResponseB\x14Z\x12/campaign;campaignb\x06proto3"
+	"\x12UpdateCampaignByID\x12&.campaign.v1.UpdateCampaignByIDRequest\x1a'.campaign.v1.UpdateCampaignByIDResponse\x12k\n" +
+	"\x14GetCampaignsByUserID\x12(.campaign.v1.GetCampaignsByUserIDRequest\x1a).campaign.v1.GetCampaignsByUserIDResponseB\x14Z\x12/campaign;campaignb\x06proto3"
 
 var (
 	file_campaign_v1_campaign_proto_rawDescOnce sync.Once
@@ -931,21 +931,21 @@ func file_campaign_v1_campaign_proto_rawDescGZIP() []byte {
 var file_campaign_v1_campaign_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_campaign_v1_campaign_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_campaign_v1_campaign_proto_goTypes = []any{
-	(CampaignStatus)(0),                 // 0: campaign.v1.CampaignStatus
-	(CampaignCategory)(0),               // 1: campaign.v1.CampaignCategory
-	(*Campaign)(nil),                    // 2: campaign.v1.Campaign
-	(*CreateCampaignRequest)(nil),       // 3: campaign.v1.CreateCampaignRequest
-	(*CreateCampaignResponse)(nil),      // 4: campaign.v1.CreateCampaignResponse
-	(*GetCampaignByIDRequest)(nil),      // 5: campaign.v1.GetCampaignByIDRequest
-	(*GetCampaignByIDResponse)(nil),     // 6: campaign.v1.GetCampaignByIDResponse
-	(*DeleteCampaignByIDRequest)(nil),   // 7: campaign.v1.DeleteCampaignByIDRequest
-	(*DeleteCampaignByIDResponse)(nil),  // 8: campaign.v1.DeleteCampaignByIDResponse
-	(*UpdateCampaignByIDRequest)(nil),   // 9: campaign.v1.UpdateCampaignByIDRequest
-	(*UpdateCampaignByIDResponse)(nil),  // 10: campaign.v1.UpdateCampaignByIDResponse
-	(*GetCampaignByUserIDRequest)(nil),  // 11: campaign.v1.GetCampaignByUserIDRequest
-	(*GetCampaignByUserIDResponse)(nil), // 12: campaign.v1.GetCampaignByUserIDResponse
-	(*timestamppb.Timestamp)(nil),       // 13: google.protobuf.Timestamp
-	(*emptypb.Empty)(nil),               // 14: google.protobuf.Empty
+	(CampaignStatus)(0),                  // 0: campaign.v1.CampaignStatus
+	(CampaignCategory)(0),                // 1: campaign.v1.CampaignCategory
+	(*Campaign)(nil),                     // 2: campaign.v1.Campaign
+	(*CreateCampaignRequest)(nil),        // 3: campaign.v1.CreateCampaignRequest
+	(*CreateCampaignResponse)(nil),       // 4: campaign.v1.CreateCampaignResponse
+	(*GetCampaignByIDRequest)(nil),       // 5: campaign.v1.GetCampaignByIDRequest
+	(*GetCampaignByIDResponse)(nil),      // 6: campaign.v1.GetCampaignByIDResponse
+	(*DeleteCampaignByIDRequest)(nil),    // 7: campaign.v1.DeleteCampaignByIDRequest
+	(*DeleteCampaignByIDResponse)(nil),   // 8: campaign.v1.DeleteCampaignByIDResponse
+	(*UpdateCampaignByIDRequest)(nil),    // 9: campaign.v1.UpdateCampaignByIDRequest
+	(*UpdateCampaignByIDResponse)(nil),   // 10: campaign.v1.UpdateCampaignByIDResponse
+	(*GetCampaignsByUserIDRequest)(nil),  // 11: campaign.v1.GetCampaignsByUserIDRequest
+	(*GetCampaignsByUserIDResponse)(nil), // 12: campaign.v1.GetCampaignsByUserIDResponse
+	(*timestamppb.Timestamp)(nil),        // 13: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),                // 14: google.protobuf.Empty
 }
 var file_campaign_v1_campaign_proto_depIdxs = []int32{
 	13, // 0: campaign.v1.Campaign.deadline:type_name -> google.protobuf.Timestamp
@@ -962,17 +962,17 @@ var file_campaign_v1_campaign_proto_depIdxs = []int32{
 	0,  // 11: campaign.v1.UpdateCampaignByIDRequest.status:type_name -> campaign.v1.CampaignStatus
 	1,  // 12: campaign.v1.UpdateCampaignByIDRequest.category:type_name -> campaign.v1.CampaignCategory
 	2,  // 13: campaign.v1.UpdateCampaignByIDResponse.updated_campaign:type_name -> campaign.v1.Campaign
-	2,  // 14: campaign.v1.GetCampaignByUserIDResponse.campaign:type_name -> campaign.v1.Campaign
+	2,  // 14: campaign.v1.GetCampaignsByUserIDResponse.campaign:type_name -> campaign.v1.Campaign
 	3,  // 15: campaign.v1.CampaignService.CreateCampaign:input_type -> campaign.v1.CreateCampaignRequest
 	5,  // 16: campaign.v1.CampaignService.GetCampaignByID:input_type -> campaign.v1.GetCampaignByIDRequest
 	7,  // 17: campaign.v1.CampaignService.DeleteCampaignByID:input_type -> campaign.v1.DeleteCampaignByIDRequest
 	9,  // 18: campaign.v1.CampaignService.UpdateCampaignByID:input_type -> campaign.v1.UpdateCampaignByIDRequest
-	11, // 19: campaign.v1.CampaignService.GetCampaignByUserID:input_type -> campaign.v1.GetCampaignByUserIDRequest
+	11, // 19: campaign.v1.CampaignService.GetCampaignsByUserID:input_type -> campaign.v1.GetCampaignsByUserIDRequest
 	4,  // 20: campaign.v1.CampaignService.CreateCampaign:output_type -> campaign.v1.CreateCampaignResponse
 	6,  // 21: campaign.v1.CampaignService.GetCampaignByID:output_type -> campaign.v1.GetCampaignByIDResponse
 	8,  // 22: campaign.v1.CampaignService.DeleteCampaignByID:output_type -> campaign.v1.DeleteCampaignByIDResponse
 	10, // 23: campaign.v1.CampaignService.UpdateCampaignByID:output_type -> campaign.v1.UpdateCampaignByIDResponse
-	12, // 24: campaign.v1.CampaignService.GetCampaignByUserID:output_type -> campaign.v1.GetCampaignByUserIDResponse
+	12, // 24: campaign.v1.CampaignService.GetCampaignsByUserID:output_type -> campaign.v1.GetCampaignsByUserIDResponse
 	20, // [20:25] is the sub-list for method output_type
 	15, // [15:20] is the sub-list for method input_type
 	15, // [15:15] is the sub-list for extension type_name

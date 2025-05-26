@@ -19,7 +19,9 @@ import (
 type CampaignService interface {
 	CreateCampaign(ctx context.Context, req *campaign.CreateCampaignRequest) (*campaign.CreateCampaignResponse, error)
 	GetCampaignByID(ctx context.Context, req *campaign.GetCampaignByIDRequest) (*campaign.GetCampaignByIDResponse, error)
-	DeleteCampaignByID(ctx context.Context, req *campaign.GetCampaignByIDRequest) interface{}
+	DeleteCampaignByID(ctx context.Context, req *campaign.DeleteCampaignByIDRequest) (*campaign.DeleteCampaignByIDResponse, error) 
+	UpdateCampaignByID(ctx context.Context, req *campaign.UpdateCampaignByIDRequest) (*campaign.UpdateCampaignByIDResponse, error) 
+	GetCampaignsByUserID(ctx context.Context, req *campaign.GetCampaignsByUserIDRequest) (*campaign.GetCampaignsByUserIDResponse, error) 
 }
 
 // campaignService is the struct implementation of CampaignService
@@ -177,9 +179,9 @@ func (s *campaignService) UpdateCampaignByID(ctx context.Context, req *campaign.
 	}, nil
 }
 
-func (s *campaignService) GetCampaignByUserID(ctx context.Context, req *campaign.GetCampaignByUserIDRequest) (*campaign.GetCampaignByUserIDResponse, error) {
+func (s *campaignService) GetCampaignsByUserID(ctx context.Context, req *campaign.GetCampaignsByUserIDRequest) (*campaign.GetCampaignsByUserIDResponse, error) {
 	// Get campaign by user id
-	campaignInterface, err := s.campaignRepo.GetCampaignByUserID(req.UserId)
+	campaignInterface, err := s.campaignRepo.GetCampaignsByUserID(req.UserId)
 	if err != nil {
 		return nil, err
 	}
@@ -210,7 +212,7 @@ func (s *campaignService) GetCampaignByUserID(ctx context.Context, req *campaign
 		)
 	}
 
-	return &campaign.GetCampaignByUserIDResponse{
+	return &campaign.GetCampaignsByUserIDResponse{
 		Campaign: campaignList,
 	},nil
 }

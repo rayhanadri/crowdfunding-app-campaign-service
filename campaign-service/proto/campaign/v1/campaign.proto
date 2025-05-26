@@ -95,11 +95,11 @@ message UpdateCampaignByIDResponse {
 }
 
 // Get Campaign By ID
-message GetCampaignByUserIDRequest {
+message GetCampaignsByUserIDRequest {
     int32 user_id = 1;
 }
 
-message GetCampaignByUserIDResponse{
+message GetCampaignsByUserIDResponse{
     repeated Campaign campaign = 1;
 }
 
@@ -108,5 +108,5 @@ service CampaignService {
   rpc GetCampaignByID(GetCampaignByIDRequest) returns (GetCampaignByIDResponse);
   rpc DeleteCampaignByID(DeleteCampaignByIDRequest) returns (DeleteCampaignByIDResponse);
   rpc UpdateCampaignByID(UpdateCampaignByIDRequest) returns (UpdateCampaignByIDResponse);
-  rpc GetCampaignByUserID(GetCampaignByUserIDRequest) returns (GetCampaignByUserIDResponse);
+  rpc GetCampaignsByUserID(GetCampaignsByUserIDRequest) returns (GetCampaignsByUserIDResponse);
 }

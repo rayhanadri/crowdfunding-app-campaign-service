@@ -19,11 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CampaignService_CreateCampaign_FullMethodName      = "/campaign.v1.CampaignService/CreateCampaign"
-	CampaignService_GetCampaignByID_FullMethodName     = "/campaign.v1.CampaignService/GetCampaignByID"
-	CampaignService_DeleteCampaignByID_FullMethodName  = "/campaign.v1.CampaignService/DeleteCampaignByID"
-	CampaignService_UpdateCampaignByID_FullMethodName  = "/campaign.v1.CampaignService/UpdateCampaignByID"
-	CampaignService_GetCampaignByUserID_FullMethodName = "/campaign.v1.CampaignService/GetCampaignByUserID"
+	CampaignService_CreateCampaign_FullMethodName       = "/campaign.v1.CampaignService/CreateCampaign"
+	CampaignService_GetCampaignByID_FullMethodName      = "/campaign.v1.CampaignService/GetCampaignByID"
+	CampaignService_DeleteCampaignByID_FullMethodName   = "/campaign.v1.CampaignService/DeleteCampaignByID"
+	CampaignService_UpdateCampaignByID_FullMethodName   = "/campaign.v1.CampaignService/UpdateCampaignByID"
+	CampaignService_GetCampaignsByUserID_FullMethodName = "/campaign.v1.CampaignService/GetCampaignsByUserID"
 )
 
 // CampaignServiceClient is the client API for CampaignService service.
@@ -34,7 +34,7 @@ type CampaignServiceClient interface {
 	GetCampaignByID(ctx context.Context, in *GetCampaignByIDRequest, opts ...grpc.CallOption) (*GetCampaignByIDResponse, error)
 	DeleteCampaignByID(ctx context.Context, in *DeleteCampaignByIDRequest, opts ...grpc.CallOption) (*DeleteCampaignByIDResponse, error)
 	UpdateCampaignByID(ctx context.Context, in *UpdateCampaignByIDRequest, opts ...grpc.CallOption) (*UpdateCampaignByIDResponse, error)
-	GetCampaignByUserID(ctx context.Context, in *GetCampaignByUserIDRequest, opts ...grpc.CallOption) (*GetCampaignByUserIDResponse, error)
+	GetCampaignsByUserID(ctx context.Context, in *GetCampaignsByUserIDRequest, opts ...grpc.CallOption) (*GetCampaignsByUserIDResponse, error)
 }
 
 type campaignServiceClient struct {
@@ -85,10 +85,10 @@ func (c *campaignServiceClient) UpdateCampaignByID(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *campaignServiceClient) GetCampaignByUserID(ctx context.Context, in *GetCampaignByUserIDRequest, opts ...grpc.CallOption) (*GetCampaignByUserIDResponse, error) {
+func (c *campaignServiceClient) GetCampaignsByUserID(ctx context.Context, in *GetCampaignsByUserIDRequest, opts ...grpc.CallOption) (*GetCampaignsByUserIDResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetCampaignByUserIDResponse)
-	err := c.cc.Invoke(ctx, CampaignService_GetCampaignByUserID_FullMethodName, in, out, cOpts...)
+	out := new(GetCampaignsByUserIDResponse)
+	err := c.cc.Invoke(ctx, CampaignService_GetCampaignsByUserID_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -103,7 +103,7 @@ type CampaignServiceServer interface {
 	GetCampaignByID(context.Context, *GetCampaignByIDRequest) (*GetCampaignByIDResponse, error)
 	DeleteCampaignByID(context.Context, *DeleteCampaignByIDRequest) (*DeleteCampaignByIDResponse, error)
 	UpdateCampaignByID(context.Context, *UpdateCampaignByIDRequest) (*UpdateCampaignByIDResponse, error)
-	GetCampaignByUserID(context.Context, *GetCampaignByUserIDRequest) (*GetCampaignByUserIDResponse, error)
+	GetCampaignsByUserID(context.Context, *GetCampaignsByUserIDRequest) (*GetCampaignsByUserIDResponse, error)
 	mustEmbedUnimplementedCampaignServiceServer()
 }
 
@@ -126,8 +126,8 @@ func (UnimplementedCampaignServiceServer) DeleteCampaignByID(context.Context, *D
 func (UnimplementedCampaignServiceServer) UpdateCampaignByID(context.Context, *UpdateCampaignByIDRequest) (*UpdateCampaignByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCampaignByID not implemented")
 }
-func (UnimplementedCampaignServiceServer) GetCampaignByUserID(context.Context, *GetCampaignByUserIDRequest) (*GetCampaignByUserIDResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignByUserID not implemented")
+func (UnimplementedCampaignServiceServer) GetCampaignsByUserID(context.Context, *GetCampaignsByUserIDRequest) (*GetCampaignsByUserIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignsByUserID not implemented")
 }
 func (UnimplementedCampaignServiceServer) mustEmbedUnimplementedCampaignServiceServer() {}
 func (UnimplementedCampaignServiceServer) testEmbeddedByValue()                         {}
@@ -222,20 +222,20 @@ func _CampaignService_UpdateCampaignByID_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _CampaignService_GetCampaignByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetCampaignByUserIDRequest)
+func _CampaignService_GetCampaignsByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCampaignsByUserIDRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(CampaignServiceServer).GetCampaignByUserID(ctx, in)
+		return srv.(CampaignServiceServer).GetCampaignsByUserID(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: CampaignService_GetCampaignByUserID_FullMethodName,
+		FullMethod: CampaignService_GetCampaignsByUserID_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CampaignServiceServer).GetCampaignByUserID(ctx, req.(*GetCampaignByUserIDRequest))
+		return srv.(CampaignServiceServer).GetCampaignsByUserID(ctx, req.(*GetCampaignsByUserIDRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -264,8 +264,8 @@ var CampaignService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _CampaignService_UpdateCampaignByID_Handler,
 		},
 		{
-			MethodName: "GetCampaignByUserID",
-			Handler:    _CampaignService_GetCampaignByUserID_Handler,
+			MethodName: "GetCampaignsByUserID",
+			Handler:    _CampaignService_GetCampaignsByUserID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
