@@ -19,10 +19,11 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CampaignService_CreateCampaign_FullMethodName     = "/campaign.v1.CampaignService/CreateCampaign"
-	CampaignService_GetCampaignByID_FullMethodName    = "/campaign.v1.CampaignService/GetCampaignByID"
-	CampaignService_DeleteCampaignByID_FullMethodName = "/campaign.v1.CampaignService/DeleteCampaignByID"
-	CampaignService_UpdateCampaignByID_FullMethodName = "/campaign.v1.CampaignService/UpdateCampaignByID"
+	CampaignService_CreateCampaign_FullMethodName      = "/campaign.v1.CampaignService/CreateCampaign"
+	CampaignService_GetCampaignByID_FullMethodName     = "/campaign.v1.CampaignService/GetCampaignByID"
+	CampaignService_DeleteCampaignByID_FullMethodName  = "/campaign.v1.CampaignService/DeleteCampaignByID"
+	CampaignService_UpdateCampaignByID_FullMethodName  = "/campaign.v1.CampaignService/UpdateCampaignByID"
+	CampaignService_GetCampaignByUserID_FullMethodName = "/campaign.v1.CampaignService/GetCampaignByUserID"
 )
 
 // CampaignServiceClient is the client API for CampaignService service.
@@ -33,6 +34,7 @@ type CampaignServiceClient interface {
 	GetCampaignByID(ctx context.Context, in *GetCampaignByIDRequest, opts ...grpc.CallOption) (*GetCampaignByIDResponse, error)
 	DeleteCampaignByID(ctx context.Context, in *DeleteCampaignByIDRequest, opts ...grpc.CallOption) (*DeleteCampaignByIDResponse, error)
 	UpdateCampaignByID(ctx context.Context, in *UpdateCampaignByIDRequest, opts ...grpc.CallOption) (*UpdateCampaignByIDResponse, error)
+	GetCampaignByUserID(ctx context.Context, in *GetCampaignByUserIDRequest, opts ...grpc.CallOption) (*GetCampaignByUserIDResponse, error)
 }
 
 type campaignServiceClient struct {
@@ -83,6 +85,16 @@ func (c *campaignServiceClient) UpdateCampaignByID(ctx context.Context, in *Upda
 	return out, nil
 }
 
+func (c *campaignServiceClient) GetCampaignByUserID(ctx context.Context, in *GetCampaignByUserIDRequest, opts ...grpc.CallOption) (*GetCampaignByUserIDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCampaignByUserIDResponse)
+	err := c.cc.Invoke(ctx, CampaignService_GetCampaignByUserID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CampaignServiceServer is the server API for CampaignService service.
 // All implementations must embed UnimplementedCampaignServiceServer
 // for forward compatibility.
@@ -91,6 +103,7 @@ type CampaignServiceServer interface {
 	GetCampaignByID(context.Context, *GetCampaignByIDRequest) (*GetCampaignByIDResponse, error)
 	DeleteCampaignByID(context.Context, *DeleteCampaignByIDRequest) (*DeleteCampaignByIDResponse, error)
 	UpdateCampaignByID(context.Context, *UpdateCampaignByIDRequest) (*UpdateCampaignByIDResponse, error)
+	GetCampaignByUserID(context.Context, *GetCampaignByUserIDRequest) (*GetCampaignByUserIDResponse, error)
 	mustEmbedUnimplementedCampaignServiceServer()
 }
 
@@ -112,6 +125,9 @@ func (UnimplementedCampaignServiceServer) DeleteCampaignByID(context.Context, *D
 }
 func (UnimplementedCampaignServiceServer) UpdateCampaignByID(context.Context, *UpdateCampaignByIDRequest) (*UpdateCampaignByIDResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateCampaignByID not implemented")
+}
+func (UnimplementedCampaignServiceServer) GetCampaignByUserID(context.Context, *GetCampaignByUserIDRequest) (*GetCampaignByUserIDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCampaignByUserID not implemented")
 }
 func (UnimplementedCampaignServiceServer) mustEmbedUnimplementedCampaignServiceServer() {}
 func (UnimplementedCampaignServiceServer) testEmbeddedByValue()                         {}
@@ -206,6 +222,24 @@ func _CampaignService_UpdateCampaignByID_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CampaignService_GetCampaignByUserID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCampaignByUserIDRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CampaignServiceServer).GetCampaignByUserID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CampaignService_GetCampaignByUserID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CampaignServiceServer).GetCampaignByUserID(ctx, req.(*GetCampaignByUserIDRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CampaignService_ServiceDesc is the grpc.ServiceDesc for CampaignService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -228,6 +262,10 @@ var CampaignService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateCampaignByID",
 			Handler:    _CampaignService_UpdateCampaignByID_Handler,
+		},
+		{
+			MethodName: "GetCampaignByUserID",
+			Handler:    _CampaignService_GetCampaignByUserID_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -15,6 +15,7 @@ type CampaignRepository interface {
 	GetCampaignByID(campaignID string) (interface{}, error) 
 	DeleteCampaignByID(id string) (error) 
 	UpdateCampaignByID(id string, userID int32,campaign models.CampaignDB) (interface{},error) 
+	GetCampaignByUserID(userID int32) (interface{}, error) 
 }
 
 // campaignRepository is the concrete implementation of CampaignRepository.
@@ -92,6 +93,15 @@ func (r *campaignRepository) UpdateCampaignByID(id string, userID int32,campaign
 		return nil,err
 	}
 	return updatedCampaign, nil
+}
+
+func (r *campaignRepository) GetCampaignByUserID(userID int32) (interface{}, error) {
+	var campaign []models.CampaignDB
+	// Get campaign by id where deleted_at != nil
+	if err := r.db.Where("user_id=?",userID).Find(&campaign).Error; err != nil{
+		return nil, status.Error(codes.NotFound,"Campaign not found")
+	}
+	return campaign,nil
 }
 
 
