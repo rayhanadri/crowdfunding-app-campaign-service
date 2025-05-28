@@ -1,4 +1,4 @@
-module campaign-service
+module github.com/rayhanadri/crowdfunding-app-campaign-service
 
 go 1.24.3
 

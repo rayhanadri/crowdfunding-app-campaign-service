@@ -1,10 +1,6 @@
 package service
 
 import (
-	"campaign-service/gen/go/campaign/v1"
-	"campaign-service/helper"
-	"campaign-service/models"
-	"campaign-service/repository"
 	"context"
 	"fmt"
 
@@ -13,15 +9,20 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"
+
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/gen/go/campaign/v1"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/helper"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/models"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/repository"
 )
 
 // CampaignService interface defines the Service methods for campaign operations
 type CampaignService interface {
 	CreateCampaign(ctx context.Context, req *campaign.CreateCampaignRequest) (*campaign.CreateCampaignResponse, error)
 	GetCampaignByID(ctx context.Context, req *campaign.GetCampaignByIDRequest) (*campaign.GetCampaignByIDResponse, error)
-	DeleteCampaignByID(ctx context.Context, req *campaign.DeleteCampaignByIDRequest) (*campaign.DeleteCampaignByIDResponse, error) 
-	UpdateCampaignByID(ctx context.Context, req *campaign.UpdateCampaignByIDRequest) (*campaign.UpdateCampaignByIDResponse, error) 
-	GetCampaignsByUserID(ctx context.Context, req *campaign.GetCampaignsByUserIDRequest) (*campaign.GetCampaignsByUserIDResponse, error) 
+	DeleteCampaignByID(ctx context.Context, req *campaign.DeleteCampaignByIDRequest) (*campaign.DeleteCampaignByIDResponse, error)
+	UpdateCampaignByID(ctx context.Context, req *campaign.UpdateCampaignByIDRequest) (*campaign.UpdateCampaignByIDResponse, error)
+	GetCampaignsByUserID(ctx context.Context, req *campaign.GetCampaignsByUserIDRequest) (*campaign.GetCampaignsByUserIDResponse, error)
 }
 
 // campaignService is the struct implementation of CampaignService
@@ -194,25 +195,24 @@ func (s *campaignService) GetCampaignsByUserID(ctx context.Context, req *campaig
 
 	var campaignList []*campaign.Campaign
 	for _, val := range getCampaign {
-			campaignList = append(campaignList,&campaign.Campaign{
-					Id:              val.ID,
-					UserId:          val.UserID,
-					Title:           val.Title,
-					Description:     val.Description,
-					TargetAmount:    val.TargetAmount,
-					CollectedAmount: val.CollectedAmount,
-					Deadline:        timestamppb.New(val.Deadline),
-					Status:          campaign.CampaignStatus(helper.MapStatusProto(val.Status)),
-					Category:        campaign.CampaignCategory(helper.MapCateogryProto(val.Category)),
-					MinDonation:     val.MinDonation,
-					CreatedAt:       timestamppb.New(val.CreatedAt),
-					UpdatedAt:       timestamppb.New(val.UpdatedAt),
-				
-			},
+		campaignList = append(campaignList, &campaign.Campaign{
+			Id:              val.ID,
+			UserId:          val.UserID,
+			Title:           val.Title,
+			Description:     val.Description,
+			TargetAmount:    val.TargetAmount,
+			CollectedAmount: val.CollectedAmount,
+			Deadline:        timestamppb.New(val.Deadline),
+			Status:          campaign.CampaignStatus(helper.MapStatusProto(val.Status)),
+			Category:        campaign.CampaignCategory(helper.MapCateogryProto(val.Category)),
+			MinDonation:     val.MinDonation,
+			CreatedAt:       timestamppb.New(val.CreatedAt),
+			UpdatedAt:       timestamppb.New(val.UpdatedAt),
+		},
 		)
 	}
 
 	return &campaign.GetCampaignsByUserIDResponse{
 		Campaign: campaignList,
-	},nil
+	}, nil
 }
