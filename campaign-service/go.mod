@@ -1,4 +1,4 @@
-module github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service
+module github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service //fix path
 
 go 1.24.3
 
