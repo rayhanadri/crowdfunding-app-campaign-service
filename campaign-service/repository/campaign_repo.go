@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc/status"
 	"gorm.io/gorm"
 
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/models"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/models"
 )
 
 // CampaignRepository defines methods for interacting with campaign-related data in the database.

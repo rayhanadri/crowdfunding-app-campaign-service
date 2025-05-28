@@ -7,11 +7,12 @@ import (
 	"os"
 
 	"github.com/joho/godotenv"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/config"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/gen/go/campaign/v1"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/repository"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/service"
 	"google.golang.org/grpc"
+
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/config"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/gen/go/campaign/v1"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/repository"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/service"
 )
 
 func main() {

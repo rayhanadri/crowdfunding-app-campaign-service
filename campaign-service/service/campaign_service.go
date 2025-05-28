@@ -10,10 +10,10 @@ import (
 	"google.golang.org/protobuf/types/known/emptypb"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/gen/go/campaign/v1"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/helper"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/models"
-	"github.com/rayhanadri/crowdfunding-app-campaign-service/repository"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/gen/go/campaign/v1"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/helper"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/models"
+	"github.com/rayhanadri/crowdfunding-app-campaign-service/campaign-service/repository"
 )
 
 // CampaignService interface defines the Service methods for campaign operations
